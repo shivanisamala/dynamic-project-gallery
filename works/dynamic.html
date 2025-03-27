@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            overflow-y: auto;
+        }
+
+        /* Content */
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            width: calc(100% - 260px);
+        }
+
+        /* Task Buttons */
+        .task-button {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            text-align: left;
+        }
+
+        .task-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Task Display */
+        #taskDetails iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar for Task List -->
+    <div class="sidebar">
+        <h4 class="text-center">Project Gallery</h4>
+        <div id="taskContainer">
+            <!-- Task buttons will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h2 id="project-title">Select a Task</h2>
+        <div id="taskDetails">
+            <iframe id="project-frame" src="" width="100%" height="600px" style="border: none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const taskContainer = document.getElementById("taskContainer");
+            const taskDetails = document.getElementById("project-frame");
+
+            const tasks = [
+                { "title": "Task 1", "url": "works/task4/index.html" },
+                { "title": "Task 2", "url": "works/task3/index-1.html" },
+                { "title": "Task 3", "url": "works/task4/index-2.html" },
+                { "title": "Task 4", "url": "works/task5/index_task2.html" },
+                { "title": "Task 5", "url": "works/task6/index2.html" },
+                { "title": "Task 6", "url": "works/task7/index4-1.html" },
+                { "title": "Task 7", "url": "works/task8/index5.html" },
+                { "title": "Task 8", "url": "works/task9/task2.html" },
+                { "title": "Task 9", "url": "works/task10/const.html" },
+                { "title": "Task 10", "url": "works/task11/24.html" },
+                { "title": "Task 11", "url": "works/task12/index.html" },
+                { "title": "Task 12", "url": "works/task13/task17.html" },
+                { "title": "Task 13", "url": "task15/bulb.html" }
+            ];
+
+            tasks.forEach(task => {
+                const button = document.createElement("button");
+                button.innerText = task.title;
+                button.className = "task-button";
+                button.onclick = () => {
+                    document.getElementById("project-title").innerText = task.title;
+                    taskDetails.src = task.url;
+                };
+                taskContainer.appendChild(button);
+            });
+        });
+    </script>
+
+</body>
+</html>
